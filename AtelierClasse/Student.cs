@@ -3,46 +3,40 @@
     public class Student
     {
         // Propriétés
-        private string _Name;
-        private List<int> _Notes;
+        private string _name;
+        private List<int> _notes;
 
         // Constructeur
         public Student(string name)
         {
-            _Name = name;
-            _Notes = new List<int>();
+            _name = name;
+            _notes = new List<int>();
         }
 
         public void SpeakTo(Student otherStudent)
         {
-            Console.WriteLine($"{_Name} parle à {otherStudent.GetName()}");
+            Console.WriteLine($"{_name} parle à {otherStudent.GetName()}");
         }
         public void YellAt(Student otherStudent)
         {
-            Console.WriteLine($"{_Name} crie sur {otherStudent.GetName()}");
+            Console.WriteLine($"{_name} crie sur {otherStudent.GetName()}");
         }
         public void AddNote(int note)
         {
-            _Notes.Add(note);
+            _notes.Add(note);
         }
-        public int[] GetNote()
+        public List<int> GetNote() 
         {
-            int[] returnedNotes = new int[_Notes.Count];
-            for (int i = 0; i < _Notes.Count ; i++)
-            {
-                returnedNotes[i] = _Notes[i];
-            }
-            return returnedNotes;
-
+            return _notes; 
         }
         public string GetName()
         {
-            return _Name;
+            return _name;
         }
         public void PrintNote()
         {
-            Console.WriteLine($"Note de {_Name} :");
-            foreach (int note in _Notes)
+            Console.WriteLine($"Note de {_name} :");
+            foreach (int note in _notes)
             {
                 Console.Write($"{note} ");
             }
