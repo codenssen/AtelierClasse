@@ -1,19 +1,16 @@
-﻿using System;
-
-
-namespace AtelierClasse
+﻿namespace AtelierClasse
 {
     public class Student
     {
         // Propriétés
         private string _Name;
-        public List<int> Notes;
+        private List<int> _Notes;
 
         // Constructeur
         public Student(string name)
         {
             _Name = name;
-            Notes = new List<int>();
+            _Notes = new List<int>();
         }
 
         public void SpeakTo(Student otherStudent)
@@ -26,7 +23,17 @@ namespace AtelierClasse
         }
         public void AddNote(int note)
         {
-            Notes.Add(note);
+            _Notes.Add(note);
+        }
+        public int[] GetNote()
+        {
+            int[] returnedNotes = new int[_Notes.Count];
+            for (int i = 0; i < _Notes.Count ; i++)
+            {
+                returnedNotes[i] = _Notes[i];
+            }
+            return returnedNotes;
+
         }
         public string GetName()
         {
@@ -35,7 +42,7 @@ namespace AtelierClasse
         public void PrintNote()
         {
             Console.WriteLine($"Note de {_Name} :");
-            foreach (int note in Notes)
+            foreach (int note in _Notes)
             {
                 Console.Write($"{note} ");
             }

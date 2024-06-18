@@ -3,17 +3,17 @@
     public class Campus
     {
         //Propriété 
-        public Student[] Students;
+        private Student[] _Students;
 
         public Campus(Student[] student)
         {
-            Students = student;
+            _Students = student;
         }
 
         public void PrintStudents()
         {
             Console.WriteLine("Liste des étudiants :");
-            foreach (Student student in Students)
+            foreach (Student student in _Students)
             {
                 Console.WriteLine(student.GetName());
                 Console.WriteLine("------------------------");
@@ -23,7 +23,7 @@
         public double NotesAverage()
         {
 
-            if (Students.Length == 0)
+            if (_Students.Length == 0)
             {
                 return -1;
             }
@@ -31,10 +31,11 @@
             double sum = 0;
             int notesNumber = 0;
 
-            foreach (var student in Students)
+            foreach (var student in _Students)
             {
-                sum += student.Notes.Sum();
-                notesNumber += student.Notes.Count();
+                int[] studentNotes = student.GetNote();
+                sum += studentNotes.Sum();
+                notesNumber += studentNotes.Count();
             }
 
             return (notesNumber == 0 ? -1 : sum / notesNumber);
